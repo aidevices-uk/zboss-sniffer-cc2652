@@ -1,0 +1,31 @@
+// @cliArgs --board /ti/boards/CC26X2R1_LAUNCHXL --rtos nortos
+
+var Power = scripting.addModule("/ti/drivers/Power");
+
+system.getScript("kernel_config_release.syscfg.js");
+
+var RF = scripting.addModule("/ti/drivers/RF");
+if (system.deviceData.board && system.deviceData.board.components.RF) {
+    RF.$hardware = system.deviceData.board.components.RF;
+}
+
+var GPIO = scripting.addModule("/ti/drivers/GPIO");
+
+var ledGreen = GPIO.addInstance();
+ledGreen.$name = "CONFIG_GPIO_GLED";
+if (system.deviceData.board && system.deviceData.board.components.LED_GREEN) {
+    ledGreen.$hardware = system.deviceData.board.components.LED_GREEN;
+}
+
+var ledRed = GPIO.addInstance();
+ledRed.$name = "CONFIG_GPIO_RLED";
+if (system.deviceData.board && system.deviceData.board.components.LED_RED) {
+    ledRed.$hardware = system.deviceData.board.components.LED_RED;
+}
+
+var UART2 = scripting.addModule("/ti/drivers/UART2");
+var uart = UART2.addInstance();
+uart.$name = "CONFIG_UART2_0";
+if (system.deviceData.board && system.deviceData.board.components.XDS110UART) {
+    uart.$hardware = system.deviceData.board.components.XDS110UART;
+}

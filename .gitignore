@@ -1,0 +1,17 @@
+firmware/ticlang/*.obj
+firmware/ticlang/*.out
+firmware/ticlang/*.map
+firmware/ticlang/*.hex
+firmware/ticlang/*.d
+firmware/ticlang/*.opt
+firmware/ticlang/ti_*
+firmware/ticlang/syscfg_c.rov.xs
+firmware/ticlang/syscfg/
+Debug/
+Release/
+.launches/
+.settings/
+.ccsproject
+.project
+.cproject
+*.exe
